@@ -84,17 +84,19 @@ def get_average_age_for_season(data, season)
   # make placeholders
   average = 0
   total = 0
-  count = 0
+
+  # get the amount of people in the season
+  count = find_season(data, season).length
 
   # get season
   find_season(data, season).collect do |contestant|
     # add up all their ages
     total += contestant["age"].to_f
-    # count how many contestants their are this season
-    count += 1
   end
+
   # get the average
   average = (total / count)
 
+  # Round to nearest integer
   average.round
 end
