@@ -62,8 +62,7 @@ def count_contestants_by_hometown(data, hometown)
   count = 0
   # get contestants
   all_contestants(data).map do |contestant|
-    # when a contestant's hometown is a match
-    # binding.pry
+    # when a contestant's hometown is a match    
     if contestant["hometown"] == hometown
       # increment count
       count += 1
@@ -75,7 +74,10 @@ def count_contestants_by_hometown(data, hometown)
 end
 
 def get_occupation(data, hometown)
-  # code here
+  # get contestants
+  all_contestants(data).select do |contestant|
+    return contestant["occupation"] if contestant["hometown"] == hometown
+  end
 end
 
 def get_average_age_for_season(data, season)
