@@ -12,10 +12,12 @@ def find_season(data, season)
 end
 # Helper to get to contestants
 def all_contestants(data)
+  all = []
     # go through data
-    data.find do |season, contestants|
-      return contestants
+    data.map do |season, contestants|
+      all << contestants
     end
+    all.flatten
 end
 # End of helpers
 
@@ -59,8 +61,9 @@ def count_contestants_by_hometown(data, hometown)
   # set count
   count = 0
   # get contestants
-  all_contestants(data).find do |contestant|
+  all_contestants(data).map do |contestant|
     # when a contestant's hometown is a match
+    # binding.pry
     if contestant["hometown"] == hometown
       # increment count
       count += 1
