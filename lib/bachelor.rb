@@ -1,5 +1,5 @@
 require 'pry'
-
+# ---------- Beginning of helper functions --------- #
 # Helper function for finding a season
 def find_season(data, season)
     # go through our data
@@ -19,7 +19,7 @@ def all_contestants(data)
     end
     all.flatten
 end
-# End of helpers
+# ---------- End of helper functions --------- #
 
 def get_first_name_of_season_winner(data, season)
   # first name
@@ -81,5 +81,20 @@ def get_occupation(data, hometown)
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+  # make placeholders
+  average = 0
+  total = 0
+  count = 0
+
+  # get season
+  find_season(data, season).collect do |contestant|
+    # add up all their ages
+    total += contestant["age"].to_f
+    # count how many contestants their are this season
+    count += 1
+  end
+  # get the average
+  average = (total / count)
+
+  average.round
 end
